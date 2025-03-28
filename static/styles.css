@@ -1,0 +1,341 @@
+/* Подключаем Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; /* Резервный шрифт */
+}
+
+body {
+    background-color: #e8e8e8; /* Светло-серый фон */
+    color: #1a1a1a; /* Почти чёрный текст */
+    line-height: 1.6;
+}
+
+/* Контейнер */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Шапка */
+header {
+    background-color: #000; /* Чёрный фон */
+    color: #fff; /* Белый текст */
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid #fff; /* Белая рамка снизу */
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+    opacity: 0.05; /* Лёгкая текстура */
+}
+
+/* Стили для логотипа */
+.logo {
+    max-width: 120px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+header p {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #fff; /* Белый цвет текста */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Белое свечение */
+    position: relative;
+    display: inline-block; /* Для корректного позиционирования псевдоэлемента */
+    transition: text-shadow 0.3s ease;
+}
+
+header p:hover {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1); /* Усиливаем свечение при наведении */
+}
+
+header p::before {
+    content: 'Ваш лучший помощник'; /* Текст псевдоэлемента */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: transparent; /* Прозрачный текст, чтобы виден был градиент */
+    background: linear-gradient(90deg, #fff, #ddd, #fff); /* Градиент для переливания */
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    opacity: 0; /* Скрываем по умолчанию */
+    transition: opacity 0.3s ease;
+}
+
+header p:hover::before {
+    opacity: 1; /* Показываем градиент при наведении */
+    animation: shimmer 2s infinite; /* Запускаем анимацию переливания */
+}
+
+/* Анимация переливания */
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Декоративная линия */
+.divider {
+    width: 60px;
+    height: 2px;
+    background-color: #fff;
+    margin: 20px auto;
+    position: relative;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.divider::before {
+    left: -5px;
+}
+
+.divider::after {
+    right: -5px;
+}
+
+/* Основная секция */
+.main {
+    background-color: #fff;
+    margin: 30px 0;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.main h2 {
+    font-size: 2em;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    position: relative;
+    display: inline-block;
+}
+
+.main h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background-color: #1a1a1a;
+}
+
+.main p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 400;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, #333 0%, #000 100%);
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border: 1px solid #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.download-btn i {
+    margin-right: 8px;
+}
+
+/* Секция обратной связи */
+.feedback {
+    background-color: #fff;
+    margin: 30px 0;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 0.2s;
+}
+
+.feedback h2 {
+    font-size: 2em;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    position: relative;
+    display: inline-block;
+}
+
+.feedback h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background-color: #1a1a1a;
+}
+
+.feedback form {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback label {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+}
+
+.feedback input,
+.feedback textarea {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #f5f5f5;
+    transition: border-color 0.3s ease;
+}
+
+.feedback input:focus,
+.feedback textarea:focus {
+    border-color: #000;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.feedback textarea {
+    height: 120px;
+    resize: none;
+}
+
+.feedback button {
+    background: linear-gradient(135deg, #333 0%, #000 100%);
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.feedback button i {
+    margin-right: 8px;
+}
+
+#feedback-message {
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #1a1a1a;
+}
+
+/* Подвал */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 30px;
+    border-top: 2px solid #fff;
+}
+
+footer p {
+    font-size: 1em;
+    font-weight: 400;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    header p {
+        font-size: 1.2em;
+    }
+
+    .logo {
+        max-width: 80px;
+    }
+
+    .main, .feedback {
+        padding: 20px;
+    }
+
+    .main h2, .feedback h2 {
+        font-size: 1.6em;
+    }
+
+    .download-btn, .feedback button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
