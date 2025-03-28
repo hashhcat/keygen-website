@@ -17,7 +17,7 @@ init_db()
 
 @app.route('/')
 def index():
-    return render_template('index.html')  # Используем render_template вместо send_static_file
+    return render_template('index.html')
 
 @app.route('/submit_feedback', methods=['POST'])
 def submit_feedback():
@@ -41,6 +41,10 @@ def submit_feedback():
 @app.route('/static/<path:path>')
 def send_static(path):
     return send_from_directory('static', path)
+
+@app.route('/healthz')
+def healthz():
+    return jsonify({'status': 'ok'}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
